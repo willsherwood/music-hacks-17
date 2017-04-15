@@ -93,9 +93,11 @@
         $.ajax({
           type: "POST",
           url: "compile",
-          data: data,
-          success: function(data){ },
-          dataType: dataType
+          data: "data here",
+          success: function(data){
+	  	console.log('received a response from server.');
+		console.log(data);
+	  },
         });
       }
     </script>
