@@ -31,7 +31,7 @@ public class Note implements Token {
             out.append("\\stemUp \\acciaccatura {");
             while (graces --> 0)
                 out.append("tomml8 ");
-            out.append("} ");
+            out.append("} \\stemUp ");
         }
         out.append(instrument);
         out.append(1 << length);
