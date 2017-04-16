@@ -11,29 +11,86 @@
     <link rel="icon" type="image/ico" href="/css/icon.ico">
     <!-- Jquery & Logic -->
     <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
     <script src="/js/logic.js"></script>
 </head>
 
 <body>
-<div class="page-header"
-     style="margin-left: 20px; margin-right: 20px; margin-top: 0; background-color: #fed; outline: solid">
-    <h1><img src="css/icon48.png"> Lickster
-        <small>Lick Creator</small>
-    </h1>
-</div>
 <div class="container">
+
+    <!--header-->
+    <div class="page-header"
+         style="">
+        <h1><img src="/css/icon48.png"> <b>Lickster</b>
+            <small>Lick Creator</small>
+        </h1>
+    </div>
+
+    <!--menus-->
+
+    <div style="margin-bottom: 20px; display: block">
+        <!--measure menu-->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" id="measureMenu">
+                Measure <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="measureMenu">
+                <li>
+                    <a href="#" id="measureMenuNewMeasure">New Measure</a>
+                </li>
+                <!--<li>-->
+                <!--<a href="#" id="measureMenuDeleteMeasure">Delete Measure by Number</a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+        <!--insert menu-->
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false" id="insertMenu">
+                Insert <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="insertMenu">
+                <li>
+                    <a href="#" id="insertMenuRudiment" data-toggle="modal" data-target="#myModal">Rudiment</a>
+                </li>
+            </ul>
+        </div>
+        <button type="button" class="btn btn-info" id="compile">compile</button>
+    </div>
+
     <div class="row">
         <form id="input-form">
-            <div class="col-sm-4">
-                <textarea class="form-control input-lg">hello</textarea>
-            </div>
-            <div class="col-sm-4">
-                <textarea class="form-control input-lg">hello</textarea>
-            </div>
-            <div class="col-sm-4">
-                <textarea class="form-control input-lg">hello</textarea>
-            </div>
         </form>
+    </div>
+
+    <img id="lickImg">
+
+    <!--modals-->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Rudiment Book</h4>
+                </div>
+                <div class="modal-body">
+
+                    <button class="btn btn-default rudiment">
+                        <img src="/lick/pataflafla.png">
+                        <br> Pataflafla
+                    </button>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>

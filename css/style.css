@@ -2,8 +2,25 @@ body {
     background-color: #FFFEED;
 }
 
-#input-form {
-    width: 100%;
+.form-control {
     font-family: monospace;
+    font-size: large;
     resize: none;
+    margin-bottom: 12px;
+}
+
+.page-header {
+    margin-top: 0;
+    background-color: #fed;
+    outline: solid;
+    font-family: TakaoPGothic, serif
+}
+
+.rudiment {
+    margin-right: 15px;
+    width: 110px;
+}
+
+#lickImg {
+    width: 100%;
 }
