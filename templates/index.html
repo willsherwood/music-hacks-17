@@ -45,7 +45,7 @@
     
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron" style="background-color: #F78764; height: 5%">
+    
       <h1>Lickster</h1>
     </div>
 
@@ -78,28 +78,31 @@
       </div>
       <div class="row">
         <div class="form-group">
-          <textarea class="form-control input-lg" id="comment" type="text" style= "height: 200px; font-size: 30px; font-family: monospace;"></textarea>
+          <button type="button" class="btn btn-primary btn-block" id="Create-btn" style="padding: 10px 20px; background-color: #EEE5E9; border-color: #EAD3DD; color:#000000">Create</button>
 
-        </div>
-      </div>
-      <button type="button" class="btn btn-primary btn-block" style="padding: 10px 20px; background-color: #EEE5E9; border-color: #EAD3DD; color:#000000">Create</button>
 </div> <!-- /container -->
     <div class="container" style="margin-top:5px;">
       <img src="volvox.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
     </div>
 
-    <script type="text/javascript">
-      function(){
+    <script>
+      $( document ).ready(function() {
+        $('#Create-btn').on('click', function(event) {
+        var text = document.getElementById("comment").value;
+        console.log("test");
         $.ajax({
           type: "POST",
           url: "compile",
-          data: "data here",
-          success: function(data){
-	  	console.log('received a response from server.');
-		console.log(data);
-	  },
+          data: text,
+          success: function(data){ },
+          dataType: dataType
         });
-      }
+      });    
+       
+});
+      
+      
+      
     </script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
