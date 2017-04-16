@@ -11,19 +11,20 @@ public class Tokens {
     public List<Token> tokens;
     private int pointer;
     private static Map<Character, String> dynamicMap;
+
     static {
         dynamicMap = new HashMap<>();
-        dynamicMap.put('P', "pp");
-        dynamicMap.put('p', "p");
-        dynamicMap.put('m', "mp");
-        dynamicMap.put('M', "mf");
-        dynamicMap.put('f', "f");
-        dynamicMap.put('F', "ff");
-        dynamicMap.put('D', ">");
-        dynamicMap.put('C', "<");
-        dynamicMap.put('d', ">");
-        dynamicMap.put('c', "<");
-        dynamicMap.put('!', "!");
+        dynamicMap.put('P', "_\\markup{\\bold \\italic pp}");
+        dynamicMap.put('p', "_\\markup{\\bold \\italic p}");
+        dynamicMap.put('m', "_\\markup{\\bold \\italic mp}");
+        dynamicMap.put('M', "_\\markup{\\bold \\italic mf}");
+        dynamicMap.put('f', "_\\markup{\\bold \\italic f}");
+        dynamicMap.put('F', "_\\markup{\\bold \\italic ff}");
+        dynamicMap.put('D', "_\\>");
+        dynamicMap.put('C', "_\\<");
+        dynamicMap.put('d', "_\\>");
+        dynamicMap.put('c', "_\\<");
+        dynamicMap.put('!', "_\\!");
     }
 
     public Tokens(String program) {
@@ -60,8 +61,9 @@ public class Tokens {
             while ("^>-".contains("" + program.charAt(pointer)))
                 exprs.add(new Expression("^" + program.charAt(pointer++)));
             // sticking
-            if ("LRlr".contains("" + program.charAt(pointer)))
-                sticking = new Sticking("_\"" + program.charAt(pointer++) + "\"");
+            if ("LR".contains("" + program.charAt(pointer)))
+                sticking = new Sticking("_\\markup{\\general-align #Y #3 " + program.charAt(pointer++) + "}");
+
             tokens.add(new Note("tomml", digit, graces, diddle, sticking, exprs));
             // dynamics
         } else if (program.charAt(pointer) == 'r') {
@@ -69,7 +71,7 @@ public class Tokens {
             int digit = program.charAt(pointer++) - '0';
             tokens.add(new Note("r", digit, 0, false, new Sticking(""), Collections.emptyList()));
         } else if (dynamicMap.containsKey(program.charAt(pointer)))
-            tokens.add(new Dynamic("\\" + dynamicMap.get(program.charAt(pointer++))));
+            tokens.add(new Dynamic(dynamicMap.get(program.charAt(pointer++))));
         else if ('t' == program.charAt(pointer)) {
             pointer++;
             int a = number();
@@ -89,6 +91,8 @@ public class Tokens {
             tokens.add(new TimeSignature(a, b));
         } else if ("{}[]()".contains("" + program.charAt(pointer))) {
             tokens.add(new Bracing(program.charAt(pointer++) + ""));
+        } else {
+            throw new RuntimeException("Unrecognized symbol " + program.charAt(pointer));
         }
         tokenize();
     }

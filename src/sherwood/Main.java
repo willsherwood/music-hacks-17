@@ -33,6 +33,7 @@ public class Main {
                 "    \\new DrumStaff \\with {\n" +
                 "      \\override StaffSymbol.line-count = #1\n" +
                 "      \\override BarLine.bar-extent = #'(-1 . 1)\n" +
+                "      \\override Slur.transparent = ##t\n" +
                 "    } <<\n" +
                 "      \\set Staff.instrumentName = #\"Sn.\"\n" +
                 "      \\notes\n" +
