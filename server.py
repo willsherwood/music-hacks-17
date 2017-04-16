@@ -22,7 +22,7 @@ def compile():
     subprocess.Popen('java sherwood.Main < ' + filename + '.raw > ' + filename + '.ly', shell=True, stdout=subprocess.PIPE).stdout.read()
 
 
-    subprocess.Popen('lilypond -dbackend=eps -dresolution=600 --png ' + filename + '.ly', shell=True, stdout=subprocess.PIPE).stdout.read()
+    subprocess.Popen('lilypond -dbackend=eps -dresolution=250 --png ' + filename + '.ly', shell=True, stdout=subprocess.PIPE).stdout.read()
 
     subprocess.Popen('move ' + filename[6:] + '.png files', shell=True, stdout=subprocess.PIPE).stdout.read()
 
