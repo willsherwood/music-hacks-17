@@ -4,6 +4,7 @@ from flask import send_from_directory
 from flask import render_template
 
 import subprocess
+import uuid
 
 app = Flask(__name__)
 
@@ -11,14 +12,35 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/compile', methods=['POST', 'GET'])
+@app.route('/compile', methods=['POST'])
 def compile():
-    # subprocess.Popen('lilypond', shell=True, stdout=subprocess.PIPE).stdout.read()
-    return 'hello miles'
+    data = list(request.form.keys())[0]
+    filename = 'files/' + str(uuid.uuid1().int>>64)
+    with open(filename+'.raw', 'w') as f:
+        f.write(data)
+
+    subprocess.Popen('java sherwood.Main < ' + filename + '.raw > ' + filename + '.ly', shell=True, stdout=subprocess.PIPE).stdout.read()
+
+
+    subprocess.Popen('lilypond -dbackend=eps -dresolution=600 --png ' + filename + '.ly', shell=True, stdout=subprocess.PIPE).stdout.read()
+
+    subprocess.Popen('move ' + filename[6:] + '.png files', shell=True, stdout=subprocess.PIPE).stdout.read()
+
+
+    subprocess.Popen('del ' + filename[6:] + '*', shell=True, stdout=subprocess.PIPE).stdout.read()
+
+
+
+    return filename + '.png'
 
 @app.route('/js/<path:path>')
 def send_js(path):
     return send_from_directory('js', path)
+
+@app.route('/files/<path:path>')
+def send_file(path):
+    return send_from_directory('files', path)
+
 
 @app.route('/css/<path:path>')
 def send_css(path):
