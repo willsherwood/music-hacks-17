@@ -24,10 +24,10 @@ def compile():
 
     subprocess.Popen('lilypond -dbackend=eps -dresolution=250 --png ' + filename + '.ly', shell=True, stdout=subprocess.PIPE).stdout.read()
 
-    subprocess.Popen('move ' + filename[6:] + '.png lick', shell=True, stdout=subprocess.PIPE).stdout.read()
+    subprocess.Popen('mv ' + filename[6:] + '.png lick', shell=True, stdout=subprocess.PIPE).stdout.read()
 
 
-    subprocess.Popen('del ' + filename[6:] + '*', shell=True, stdout=subprocess.PIPE).stdout.read()
+    subprocess.Popen('rm ' + filename[6:] + '*', shell=True, stdout=subprocess.PIPE).stdout.read()
 
 
 
