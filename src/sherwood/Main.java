@@ -34,6 +34,10 @@ public class Main {
                 "      \\override StaffSymbol.line-count = #1\n" +
                 "      \\override BarLine.bar-extent = #'(-1 . 1)\n" +
                 "      \\override Slur.transparent = ##t\n" +
+                "\\override StemTremolo #'slope = #0.5\n" +
+                "\\override StemTremolo #'beam-thickness = #0.25\n" +
+                "\\override StemTremolo #'beam-width = #1.75\n" +
+                "\\override StemTremolo #'Y-offset = #2.25\n" +
                 "    } <<\n" +
                 "      \\set Staff.instrumentName = #\"Sn.\"\n" +
                 "      \\notes\n" +
