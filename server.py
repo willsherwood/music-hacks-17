@@ -24,14 +24,14 @@ def compile():
 
     subprocess.Popen('lilypond -dbackend=eps -dresolution=250 --png ' + filename + '.ly', shell=True, stdout=subprocess.PIPE).stdout.read()
 
-    subprocess.Popen('move ' + filename[6:] + '.png files', shell=True, stdout=subprocess.PIPE).stdout.read()
+    subprocess.Popen('move ' + filename[6:] + '.png lick', shell=True, stdout=subprocess.PIPE).stdout.read()
 
 
     subprocess.Popen('del ' + filename[6:] + '*', shell=True, stdout=subprocess.PIPE).stdout.read()
 
 
 
-    return filename + '.png'
+    return 'lick/' + filename[6:] + '.png'
 
 @app.route('/js/<path:path>')
 def send_js(path):
@@ -49,6 +49,11 @@ def send_css(path):
 @app.route('/fonts/<path:path>')
 def send_fonts(path):
     return send_from_directory('fonts', path)
+
+@app.route('/lick/<path:path>')
+def send_lick(path):
+    return send_from_directory('lick', path)
+
 
 if __name__ == '__main__':
     app.run()

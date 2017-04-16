@@ -5,8 +5,8 @@ $(document).ready(function() {
             url: "compile",
             data: $('#comment').val(),
             success: function(data) {
-                console.log('hello');
                 $("#sheets").attr('src', data);
+		$("#share").html('Share your lick: <a href="' + data + '"><i>Here</i></a>');
             }
         });
     });
