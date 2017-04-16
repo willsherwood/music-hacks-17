@@ -1,0 +1,9 @@
+body {
+    background-color: #FFFEED;
+}
+
+#input-form {
+    width: 100%;
+    font-family: monospace;
+    resize: none;
+}

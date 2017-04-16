@@ -1,59 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="css/favicon.ico">
 
     <title>Lickster</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/logic.js"></script>
+    <!-- Style Sheets -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="/css/icon.ico">
+    <!-- Jquery & Logic -->
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/logic.js"></script>
+</head>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <style type="text/css">
-    body {
-      background-color: #FFFEED;">
-    }
-    button {
-
-    }
-    #sheets {
-        width: 100%;
-    }
-  </style>
-  <body>
-      
-
-	  <div class="jumbotron" style="background-color: #FFA07A">
-      <h1>Lickster</h1>
-	  </div>
-
-    <div class="container">
-    <!--Buttons-->
-    <div class="container" style="text-align: middle;">
-        <h1>Lick Creator</h1>
-        <div class="row" style=" padding-bottom: : 2">
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group">
-<textarea class="form-control input-lg" id="comment" type="text" style= "height: 200px; font-size: 30px; font-family: monospace;"></textarea>
-
-          <button type="button" class="btn btn-primary btn-block" id="Create-btn" style="padding: 10px 20px; background-color: #EEE5E9; border-color: #EAD3DD; color:#000000">Create</button>
-
-</div> <!-- /container -->
-    <div class="container" style="margin-top:5px;">
-      <img src="" id="sheets">
+<body>
+<div class="page-header"
+     style="margin-left: 20px; margin-right: 20px; margin-top: 0; background-color: #fed; outline: solid">
+    <h1><img src="css/icon48.png"> Lickster
+        <small>Lick Creator</small>
+    </h1>
+</div>
+<div class="container">
+    <div class="row">
+        <form id="input-form">
+            <div class="col-sm-4">
+                <textarea class="form-control input-lg">hello</textarea>
+            </div>
+            <div class="col-sm-4">
+                <textarea class="form-control input-lg">hello</textarea>
+            </div>
+            <div class="col-sm-4">
+                <textarea class="form-control input-lg">hello</textarea>
+            </div>
+        </form>
     </div>
+</div>
+</body>
 
-<p id="share" style="font-size: 40px;"></p>
-
-  </body>
 </html>
