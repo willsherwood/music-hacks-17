@@ -16,12 +16,6 @@ public class Main {
         String out = String.join(" ", new Tokens(program).tokens.stream().map(Token::lily).collect(Collectors.toList()));
         System.out.println("\\version \"2.18.2\"\n" +
                 "\n\\paper {\n" +
-                "  indent = 0\\mm\n" +
-                "  line-width = 110\\mm\n" +
-                "  oddHeaderMarkup = \"\"\n" +
-                "  evenHeaderMarkup = \"\"\n" +
-                "  oddFooterMarkup = \"\"\n" +
-                "  evenFooterMarkup = \"\"\n" +
                 "}\n" +
                 "notes = \\drummode {\n" +
                 "  \\stemUp " +

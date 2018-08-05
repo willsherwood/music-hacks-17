@@ -11,6 +11,7 @@ public class Tokens {
     public List<Token> tokens;
     private int pointer;
     private static Map<Character, String> dynamicMap;
+		private static int notes;
 
     static {
         dynamicMap = new HashMap<>();
@@ -35,13 +36,18 @@ public class Tokens {
 
     private void tokenize() {
         if (pointer == program.length()) return;
-        if (program.charAt(pointer) == ' ')
+        if (program.charAt(pointer) == ' ' || program.charAt(pointer) == 9)
             pointer++;
         else if (Character.isDigit(program.charAt(pointer))) {
             int digit = program.charAt(pointer++) - '0';
             List<Expression> exprs = new ArrayList<>();
-            Sticking sticking = new Sticking("");
-            boolean diddle = false;
+           // Sticking sticking = new Sticking("_\\markup{\\general-align #Y #3 " + (notes % 2 == 0 ? "R" : "L") + "}");
+					  Sticking sticking = new Sticking("");
+
+				//		if (notes++ % 3 == 0) exprs.add(new Expression("^>"));
+            boolean diddle = // notes++ % 3 == 0;
+						false;
+
             int graces = 0;
             // dotted rhythm
             while (program.charAt(pointer) == '.') {
@@ -58,9 +64,13 @@ public class Tokens {
                 pointer++;
             }
             // expressions
-            while ("^>-".contains("" + program.charAt(pointer)))
-                exprs.add(new Expression("^" + program.charAt(pointer++)));
+            while ("^>-z".contains("" + program.charAt(pointer))) {
+            	char expr = program.charAt(pointer++);
+		if (expr == 'z') expr = '.'; 
+		exprs.add(new Expression("^" + expr));
+	    }
             // sticking
+						
             if ("LR".contains("" + program.charAt(pointer)))
                 sticking = new Sticking("_\\markup{\\general-align #Y #3 " + program.charAt(pointer++) + "}");
 
@@ -92,7 +102,7 @@ public class Tokens {
         } else if ("{}[]()".contains("" + program.charAt(pointer))) {
             tokens.add(new Bracing(program.charAt(pointer++) + ""));
         } else {
-            throw new RuntimeException("Unrecognized symbol " + program.charAt(pointer));
+            throw new RuntimeException("Unrecognized symbol " + (int) program.charAt(pointer));
         }
         tokenize();
     }
