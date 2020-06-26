@@ -19,7 +19,7 @@ def compile():
     with open(filename+'.raw', 'w') as f:
         f.write(data)
 
-    subprocess.Popen('java sherwood.Main < ' + filename + '.raw > ' + filename + '.ly', shell=True, stdout=subprocess.PIPE).stdout.read()
+    subprocess.Popen('java sherwood.Main 5 < ' + filename + '.raw > ' + filename + '.ly', shell=True, stdout=subprocess.PIPE).stdout.read()
 
 
     subprocess.Popen('lilypond -dbackend=eps -dresolution=250 --png ' + filename + '.ly', shell=True, stdout=subprocess.PIPE).stdout.read()

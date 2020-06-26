@@ -1,0 +1,1 @@
+jar cfe mh.jar sherwood.Main sherwood/Main.class sherwood/tokens/*.class

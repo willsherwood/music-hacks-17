@@ -1,0 +1,14 @@
+#!/bin/bash
+cd ~/m 
+
+java sherwood.Main 20 x < sqrt2/yolo > sqrt2/yolo.ly
+ 
+java sherwood.Main 20 x < sqrt2/yolo > sqrt2/yolo.ly
+lilypond sqrt2/yolo.ly
+
+java sherwood.Main 20 < sqrt2/yolo > sqrt2/yolo.ly 
+lilypond sqrt2/yolo.ly                      
+mv yolo.pdf sqrt2
+
+cd -
+evince yolo.pdf&

@@ -28,10 +28,10 @@ public class Note implements Token {
         StringBuilder out = new StringBuilder();
         int graces = this.graces;
         if (graces > 0) {
-            out.append("\\stemUp \\acciaccatura {");
+            out.append("\\stemUp \\acciaccatura { \\scaleDurations 1/64 { ");
             while (graces --> 0)
                 out.append("tomml8 ");
-            out.append("} \\stemUp ");
+            out.append("}} \\stemUp ");
         }
         out.append(instrument);
         out.append(1 << length);

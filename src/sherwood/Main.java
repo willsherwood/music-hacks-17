@@ -9,12 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         String program = String.join(" ", sysInLines());
         String out = String.join(" ", new Tokens(program).tokens.stream().map(Token::lily).collect(Collectors.toList()));
         System.out.println("\\version \"2.18.2\"\n" +
+                        "#(set! paper-alist (cons '(\"my size\" . (cons (* " + Integer.parseInt(args[0]) + " in) (* " + Integer.parseInt(args[1]) + " in))) paper-alist))\n" +
                 "\n\\paper {\n" +
                 "  indent = 0\\mm\n" +
                 "  line-width = 110\\mm\n" +
@@ -22,13 +24,14 @@ public class Main {
                 "  evenHeaderMarkup = \"\"\n" +
                 "  oddFooterMarkup = \"\"\n" +
                 "  evenFooterMarkup = \"\"\n" +
+                "  #(set-paper-size \"my size\")\n" +
                 "}\n" +
                 "notes = \\drummode {\n" +
                 "  \\stemUp " +
                 out +
                 "}\n" +
                 "\n" +
-                "\\score {\n" +
+                "\\score { \n" +
                 "  <<\n" +
                 "    \\new DrumStaff \\with {\n" +
                 "      \\override StaffSymbol.line-count = #1\n" +
@@ -42,7 +45,7 @@ public class Main {
                 "      \\set Staff.instrumentName = #\"Sn.\"\n" +
                 "      \\notes\n" +
                 "    >>\n" +
-                "  >>\n" +
+                "  >>\n " + (args.length > 2 ? "\\midi { }\n" : "") +
                 " " +
                 "}\n");
     }
