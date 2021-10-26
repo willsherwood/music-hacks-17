@@ -11,7 +11,7 @@
   #(set-paper-size "my size")
 }
 notes = \drummode {
-  \stemUp tomml4 tomml4 tomml8 tomml8 tomml4 \tuplet 5/4{ tomml8 tomml8:16 tomml8:16 tomml8:16 tomml8 } \tuplet 5/4{ tomml8:16 r8 tomml8 tomml8 tomml8 } \tuplet 4/3{ tomml8 [ tomml8:16 tomml8:16 tomml8:16 ] tomml8 } \tuplet 4/3{ [ tomml8:16 r8 tomml8 ] tomml8 [ tomml8 ] }}
+  \stemUp tomml16 tomml16^> tomml8:16^> tomml16^> tomml16 tomml8:16^> tomml16 tomml16 tomml8:16^> tomml16^> tomml16^> tomml8:16^> \tuplet 3/2{ tomml8:16 tomml8:16 tomml8:16 } tomml16^> tomml16 tomml8:16 tomml16 tomml16^> tomml8:16 \tuplet 4/3{ tomml8 tomml8:16 tomml8:16 tomml8:16 } tomml16 tomml16 tomml8:16 tomml16^> tomml16^> tomml8:16 \tuplet 5/4{ tomml8 tomml8:16 tomml8:16 tomml8:16 tomml8:16 }}
 
 \score { 
   <<
@@ -28,5 +28,6 @@ notes = \drummode {
       \notes
     >>
   >>
-  }
+ \midi { }
+ }
 

@@ -21,4 +21,4 @@ g indicates a grace note (we can have 1 or more grace notes)
 
 Optional sticking follows (only l, r, L, or R)
 
-t5 4{some notes} a 5:4 tuple, etc.
+t5 4{some notes} is a 5:4 tuple, etc.

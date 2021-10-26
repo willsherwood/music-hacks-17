@@ -1,0 +1,3 @@
+#!/bin/bash
+./articulate $1
+start out.pdf

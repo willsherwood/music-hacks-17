@@ -1,0 +1,9 @@
+#!/bin/bash
+java -jar ~/mh.jar 10 16 < $1 > out.ly; 
+lilypond out.ly; 
+
+java -jar ~/mh.jar 10 16 midi < $1 > out.ly; 
+sed out.ly -e 's/"2.18.2"/"2.18.2" \\include "articulate.ly" /g' > lol; sed lol -e 's/score {/score { \\articulate /g' > out-midi.ly
+lilypond out-midi.ly;
+
+
